@@ -1,0 +1,64 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+</button>
+
+<div class="row" style="margin: 20px;">
+    <div class="col-sm-4">
+        <div class="list-group" >
+            <div *ngFor="let item of tutorialsList; let i = index">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <button type="button" 
+                        class="list-group-item list-group-item-action"
+                        [ngClass]="{'active': selectedIndex === i}" 
+                        [attr.aria-current]="selectedIndex === i ? 'true' : null"
+                        (click)="previewDetails(item._id, i)">
+                        {{ item.title }}
+                    </button>
+                    </div>
+                    <div class="col-sm-4" style="align-items:end;">
+                        <span class="material-symbols-outlined">
+                            edit
+                        </span>
+                        <span class="material-symbols-outlined">
+                            delete
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-8" *ngIf="selected!=null">
+        <div class="card">
+            <img src="../../assets/JavaScript.png" class="card-img-top" alt="..." style="max-height: 250px;">
+            <div class="card-body">
+              <h5 class="card-title">{{ selected.title }}</h5>
+              <p class="card-text">{{ selected.description }} </p>
+              <a [href]="selected.url" target="_blank" class="btn btn-primary">Learn More!</a>
+            </div>
+          </div>
+    </div>
+</div>
+
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
